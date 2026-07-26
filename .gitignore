@@ -8,3 +8,6 @@ __pycache__/
 # Ignore virtual environments
 venv/
 env/
+
+#ignore vectorDB
+my_local_vectordb/
