@@ -1,5 +1,5 @@
 import os
-from src.document_parser import extract_text_from_pdf, chunk_text
+from src.document_parser import extract_advanced_content, chunk_text
 from src.database import store_chunks_in_chroma
 from src.search import search_database
 from src.generator import generate_answer
@@ -10,7 +10,7 @@ def ingest_document(pdf_path: str):
         return
 
     print(f"Reading {pdf_path}...")
-    raw_text = extract_text_from_pdf(pdf_path)
+    raw_text = extract_advanced_content(pdf_path)
     
     print("Chunking text...")
     chunks = chunk_text(raw_text, chunk_size=1000, overlap=200)
