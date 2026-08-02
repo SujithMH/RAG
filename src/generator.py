@@ -22,9 +22,9 @@ Question:
 {query}
 """
 
-    print("Generating answer via llava...")
+    print("Generating answer via mistral...")
     response = ollama.chat(
-        model='llava', 
+        model='mistral', 
         messages=[{'role': 'user', 'content': prompt}]
     )
     
