@@ -3,3 +3,10 @@ sentence-transformers==3.0.1
 chromadb==0.5.3
 ollama==0.6.2
 pillow
+PyMuPDF
+pdfplumber
+langchain-text-splitters
+fastapi
+uvicorn
+python-multipart
+pydantic

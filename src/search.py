@@ -5,7 +5,7 @@ from sentence_transformers import CrossEncoder
 print("Loading Cross-Encoder model...")
 cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
 
-def search_and_rerank(query: str, collection, initial_k: int = 15, final_k: int = 3) -> list[dict]:
+def search_and_rerank(query: str, collection, initial_k: int = 30, final_k: int = 5) -> list[dict]:
     """
     Retrieves a broad set of candidates using a fast Bi-Encoder, 
     then scores and filters them using an accurate Cross-Encoder.

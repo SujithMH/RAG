@@ -46,8 +46,7 @@ if __name__ == "__main__":
     print(f"\nUser Query: {query}")
     
     # Search and re-rank candidates
-    retrieved_chunks = search_and_rerank(query, collection, initial_k=15, final_k=3)
-    
+    retrieved_chunks = search_and_rerank(query, collection, initial_k=30, final_k=5)    
     if not retrieved_chunks:
         print("No relevant information found in the database.")
     else:

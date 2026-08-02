@@ -10,10 +10,12 @@ def generate_answer(query: str, retrieved_chunks: list[dict]) -> str:
         # Inject the metadata tags right into the LLM's context window
         context += f"[Source: {source} | Page: {page}]\n{text}\n\n"
     
-    prompt = f"""You are a helpful expert. Answer the user's question using ONLY the context provided below. 
-If the answer cannot be found in the context, do not guess. 
+    prompt = f"""You are a strict, factual expert. Answer the user's question using ONLY the context provided below. 
 
-CRITICAL RULE: You must explicitly cite the Source and Page number for every fact you state in your answer.
+CRITICAL RULES:
+1. You must explicitly cite the Source and Page number for every fact you state.
+2. If the context only provides examples (e.g., a "Vacuum Cleaner Agent") but does not provide the actual definition or overarching types requested by the user, YOU MUST STATE: "The provided document only contains specific examples, not the formal definitions." Do not try to reverse-engineer a definition from an example.
+3. If the answer cannot be found in the context at all, do not guess. State that the information is missing.
 
 Context:
 {context}
@@ -22,9 +24,9 @@ Question:
 {query}
 """
 
-    print("Generating answer via mistral...")
+    print("Generating answer via phi4-mini...")
     response = ollama.chat(
-        model='mistral', 
+        model='phi4-mini', 
         messages=[{'role': 'user', 'content': prompt}]
     )
     
