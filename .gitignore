@@ -11,3 +11,5 @@ env/
 
 #ignore vectorDB
 my_local_vectordb/
+
+api_learning.py/
